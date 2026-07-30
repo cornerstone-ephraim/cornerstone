@@ -53,7 +53,7 @@ export default function ConnectSection({
             const Icon = el.icon;
             const href =
               el.social === "Email"
-                ? "mailto:fortunecornerstone@gmail.com"
+                ? "mailto:thecornerstoneephraim@gmail.com"
                 : `https://${el.url}`;
 
             return (

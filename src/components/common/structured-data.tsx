@@ -34,7 +34,7 @@ export default function StructuredData({
       "Zustand",
       "Playwright",
     ],
-    email: "fortunecornerstone@gmail.com",
+    email: "thecornerstoneephraim@gmail.com",
     image: "https://cornerstoneephraim.vercel.app/images/cornerstone.jpg",
   };
 
