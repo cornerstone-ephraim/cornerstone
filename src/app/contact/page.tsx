@@ -56,15 +56,16 @@ export default function ContactPage() {
               </ContactRow>
 
               <ContactRow label="Resume">
-                <Link
+                <a
                   href={content.resume.href}
                   target="_blank"
+                  rel="noreferrer"
                   download="Cornerstone_Ephraim_Resume.pdf"
                   className="inline-flex items-center gap-2 text-xl font-medium tracking-[-0.035em] sm:text-2xl"
                 >
                   {content.resume.label}
                   <Download className="size-5" />
-                </Link>
+                </a>
               </ContactRow>
 
               <div className="pt-7">
