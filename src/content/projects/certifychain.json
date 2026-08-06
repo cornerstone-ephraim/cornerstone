@@ -4,6 +4,7 @@
   "category": "Product",
   "industry": "Blockchain",
   "website": "https://certifychain-fe.vercel.app",
+  "github": "https://github.com/Cornerstone-04/certifychain-fe",
   "status": "Personal Project",
   "role": "Frontend Engineer",
   "summary": "CertifyChain explores secure digital credential verification using modern web technologies and decentralized principles.",
@@ -53,15 +54,9 @@
   "featured": false,
   "order": 8,
   "cover": {
-    "image": "/images/projects/certifychain.png",
+    "image": "/images/projects/certifychain.webp",
     "alt": "CertifyChain project identity",
     "tone": "blue"
-  },
-  "interactionPreview": {
-    "video": "/videos/projects/certifychain-preview.webm",
-    "poster": "/images/projects/certifychain.png",
-    "label": "Interaction preview",
-    "caption": "A short preview of the CertifyChain credential verification experience."
   },
   "seo": {
     "title": "CertifyChain | Cornerstone Ephraim",

@@ -49,15 +49,9 @@
   "featured": true,
   "order": 2,
   "cover": {
-    "image": "/images/projects/kelvar.png",
+    "image": "/images/projects/kelvar.webp",
     "alt": "Kelvar Industries project cover",
     "tone": "signal"
-  },
-  "interactionPreview": {
-    "video": "/videos/projects/kelvar-preview.webm",
-    "poster": "/images/projects/kelvar.png",
-    "label": "Interaction preview",
-    "caption": "A short preview of the Kelvar Industries website experience."
   },
   "seo": {
     "title": "Kelvar Industries | Cornerstone Ephraim",

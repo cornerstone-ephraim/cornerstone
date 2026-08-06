@@ -42,15 +42,9 @@
   "featured": false,
   "order": 5,
   "cover": {
-    "image": "/images/projects/forever.png",
+    "image": "/images/projects/forever.webp",
     "alt": "Forever Ephraim project identity",
     "tone": "rose"
-  },
-  "interactionPreview": {
-    "video": "/videos/projects/forever-preview.webm",
-    "poster": "/images/projects/forever.png",
-    "label": "Interaction preview",
-    "caption": "A short preview of the Forever Ephraim content and storytelling experience."
   },
   "seo": {
     "title": "Forever Ephraim | Cornerstone Ephraim",

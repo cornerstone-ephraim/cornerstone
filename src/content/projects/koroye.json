@@ -49,15 +49,9 @@
   "featured": true,
   "order": 3,
   "cover": {
-    "image": "/images/projects/koroye.png",
+    "image": "/images/projects/koroye.webp",
     "alt": "Koroye project cover",
     "tone": "paper"
-  },
-  "interactionPreview": {
-    "video": "/videos/projects/keniye-preview.webm",
-    "poster": "/images/projects/koroye.png",
-    "label": "Interaction preview",
-    "caption": "A short preview of the Koroye website experience."
   },
   "seo": {
     "title": "Koroye | Cornerstone Ephraim",

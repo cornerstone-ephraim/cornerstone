@@ -1,6 +1,5 @@
 import { Container } from "@/components/layout/container";
 import { ProjectCover } from "@/components/project/project-cover";
-import { ProjectVideoPreview } from "@/components/project/project-video-preview";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionLabel } from "@/components/ui/section-label";
 import type { ProjectContent } from "@/lib/types";
@@ -70,30 +69,12 @@ export function ProjectDetail({ project }: { project: ProjectContent }) {
           </div>
         </div>
 
-        {project.interactionPreview ? (
-          <Reveal>
-            <div className="mt-28 sm:mt-36">
-              <SectionLabel>
-                {project.interactionPreview.label ?? "Interaction preview"}
-              </SectionLabel>
-              <div className="mt-10">
-                <ProjectVideoPreview
-                  preview={project.interactionPreview}
-                  title={project.title}
-                />
-              </div>
-            </div>
-          </Reveal>
-        ) : null}
-
-        {!project.interactionPreview ? (
-          <Reveal>
-            <div className="mt-28 sm:mt-36">
-              <SectionLabel>Project image</SectionLabel>
-              <ProjectCover project={project} className="mt-10 aspect-[16/8]" />
-            </div>
-          </Reveal>
-        ) : null}
+        <Reveal>
+          <div className="mt-28 sm:mt-36">
+            <SectionLabel>Project image</SectionLabel>
+            <ProjectCover project={project} className="mt-10 aspect-[16/8]" />
+          </div>
+        </Reveal>
       </Container>
     </section>
   );

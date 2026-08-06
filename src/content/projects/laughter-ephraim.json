@@ -42,15 +42,9 @@
   "featured": false,
   "order": 6,
   "cover": {
-    "image": "/images/projects/laughter.png",
+    "image": "/images/projects/laughter.webp",
     "alt": "Laughter Ephraim project identity",
     "tone": "amber"
-  },
-  "interactionPreview": {
-    "video": "/videos/projects/laughter-preview.webm",
-    "poster": "/images/projects/laughter.png",
-    "label": "Interaction preview",
-    "caption": "A short preview of the Laughter Ephraim creative portfolio experience."
   },
   "seo": {
     "title": "Laughter Ephraim | Cornerstone Ephraim",

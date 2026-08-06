@@ -4,6 +4,7 @@
   "category": "Product",
   "industry": "Education Technology",
   "website": "https://peershelf.vercel.app",
+  "github": "https://github.com/Cornerstone-04/peershelf-fe",
   "status": "Personal Project",
   "role": "Product Designer & Frontend Engineer",
   "summary": "PeerShelf is an academic collaboration platform designed to help students discover, share, and access educational resources.",
@@ -55,15 +56,9 @@
   "featured": false,
   "order": 7,
   "cover": {
-    "image": "/images/projects/peershelf.png",
+    "image": "/images/projects/peershelf.webp",
     "alt": "PeerShelf project identity",
     "tone": "violet"
-  },
-  "interactionPreview": {
-    "video": "/videos/projects/peershelf-preview.webm",
-    "poster": "/images/projects/peershelf.png",
-    "label": "Interaction preview",
-    "caption": "A short preview of the PeerShelf product experience."
   },
   "seo": {
     "title": "PeerShelf | Cornerstone Ephraim",

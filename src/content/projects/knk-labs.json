@@ -51,15 +51,9 @@
   "featured": true,
   "order": 1,
   "cover": {
-    "image": "/images/projects/knklabs.png",
+    "image": "/images/projects/knklabs.webp",
     "alt": "KNK Labs project cover",
     "tone": "oxide"
-  },
-  "interactionPreview": {
-    "video": "/videos/projects/knklabs-preview.webm",
-    "poster": "/images/projects/knklabs.png",
-    "label": "Interaction preview",
-    "caption": "A short preview of the KNK Labs website experience."
   },
   "seo": {
     "title": "KNK Labs | Cornerstone Ephraim",

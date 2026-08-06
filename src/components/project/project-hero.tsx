@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Github } from "lucide-react";
 import Link from "next/link";
 import { Container } from "@/components/layout/container";
 import { ProjectCover } from "@/components/project/project-cover";
@@ -29,15 +29,29 @@ export function ProjectHero({ project }: { project: ProjectContent }) {
               <p className="mt-2 text-sm text-ink-inverse/80">{value}</p>
             </div>
           ))}
-          {project.website && (
-            <Link
-              href={project.website}
-              target="_blank"
-              className="inline-flex items-center gap-2 text-sm md:justify-self-end"
-            >
-              Visit live site
-              <ArrowUpRight className="size-4" />
-            </Link>
+          {(project.website || project.github) && (
+            <div className="flex flex-wrap items-center gap-4 md:justify-self-end">
+              {project.website ? (
+                <Link
+                  href={project.website}
+                  target="_blank"
+                  className="inline-flex items-center gap-2 text-sm"
+                >
+                  Visit live site
+                  <ArrowUpRight className="size-4" />
+                </Link>
+              ) : null}
+              {project.github ? (
+                <Link
+                  href={project.github}
+                  target="_blank"
+                  className="inline-flex items-center gap-2 text-sm"
+                >
+                  View GitHub
+                  <Github className="size-4" />
+                </Link>
+              ) : null}
+            </div>
           )}
         </Reveal>
         <Reveal>

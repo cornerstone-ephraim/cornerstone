@@ -108,6 +108,7 @@ export type ProjectContent = {
   category: ProjectCategory;
   industry: string;
   website?: string;
+  github?: string;
   status: string;
   role: string;
   summary: string;
