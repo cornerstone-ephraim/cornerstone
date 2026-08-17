@@ -61,6 +61,7 @@ export function ExperienceSection({
                   <Link
                     href={item.url}
                     target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={`Visit ${item.company}`}
                     className="rounded-full border border-ink-primary/15 p-3 transition-colors hover:bg-ink-primary hover:text-ink-inverse"
                   >

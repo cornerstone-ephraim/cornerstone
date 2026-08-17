@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { ClientWorkSection } from "@/components/sections/client-work-section";
 import { ContactSection } from "@/components/sections/contact-section";
 import { ExperienceSection } from "@/components/sections/experience-section";
@@ -11,9 +12,25 @@ import {
   getHomeContent,
   getProjectsByCategory,
 } from "@/lib/content";
+import { buildMetadata } from "@/lib/seo";
+
+const content = getHomeContent();
+
+export const metadata: Metadata = buildMetadata({
+  title: content.seo.title,
+  description: content.seo.description,
+  path: "/",
+  image: content.seo.image,
+  imageAlt: "Portrait of Cornerstone Ephraim",
+  keywords: [
+    "Portfolio",
+    "Product-minded Frontend Engineer",
+    "Client Work",
+    "Product Work",
+  ],
+});
 
 export default function Home() {
-  const content = getHomeContent();
   const allProjects = getAllProjects();
   const selected = content.selectedWork.projectSlugs
     .map((slug) => allProjects.find((project) => project.slug === slug))

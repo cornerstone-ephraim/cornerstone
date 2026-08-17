@@ -1,32 +1,77 @@
 "use client";
 
 import { X } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import type { NavigationContent } from "@/lib/types";
 
 type MobileNavProps = {
+  id: string;
   content: NavigationContent;
   open: boolean;
   onCloseAction: () => void;
 };
 
 export default function MobileNav({
+  id,
   content,
   open,
   onCloseAction,
 }: MobileNavProps) {
   const pathname = usePathname();
+  const shouldReduceMotion = useReducedMotion();
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = open ? "hidden" : originalOverflow;
+
+    if (open) {
+      requestAnimationFrame(() => closeButtonRef.current?.focus());
+    }
 
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow = originalOverflow;
     };
   }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        onCloseAction();
+        return;
+      }
+
+      if (event.key !== "Tab" || !panelRef.current) return;
+
+      const focusableElements = panelRef.current.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      );
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (!firstElement || !lastElement) return;
+
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [onCloseAction, open]);
 
   const activeHref = (href: string) =>
     href === "/"
@@ -37,10 +82,24 @@ export default function MobileNav({
     <AnimatePresence>
       {open && (
         <motion.div
-          initial={{ clipPath: "inset(0 0 100% 0)" }}
-          animate={{ clipPath: "inset(0 0 0% 0)" }}
-          exit={{ clipPath: "inset(0 0 100% 0)" }}
-          transition={{ duration: 0.55, ease: [0.76, 0, 0.24, 1] }}
+          id={id}
+          ref={panelRef}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mobile navigation"
+          initial={
+            shouldReduceMotion ? { opacity: 0 } : { clipPath: "inset(0 0 100% 0)" }
+          }
+          animate={
+            shouldReduceMotion ? { opacity: 1 } : { clipPath: "inset(0 0 0% 0)" }
+          }
+          exit={
+            shouldReduceMotion ? { opacity: 0 } : { clipPath: "inset(0 0 100% 0)" }
+          }
+          transition={{
+            duration: shouldReduceMotion ? 0.01 : 0.55,
+            ease: [0.76, 0, 0.24, 1],
+          }}
           className="fixed inset-0 z-[60] flex min-h-dvh flex-col bg-canvas-dark px-5 pb-8 text-canvas-light sm:px-8 md:hidden"
         >
           <div className="flex items-center justify-between h-20">
@@ -55,6 +114,7 @@ export default function MobileNav({
             <button
               type="button"
               aria-label="Close navigation"
+              ref={closeButtonRef}
               onClick={onCloseAction}
               className="grid size-11 place-items-center rounded-full border border-ink-inverse/20 bg-canvas-dark text-ink-inverse md:hidden"
             >
@@ -84,10 +144,13 @@ export default function MobileNav({
                 <motion.div
                   key={item.href}
                   variants={{
-                    hidden: { opacity: 0, y: 34 },
-                    show: { opacity: 1, y: 0 },
+                    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 34 },
+                    show: { opacity: 1, y: shouldReduceMotion ? 0 : 0 },
                   }}
-                  transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{
+                    duration: shouldReduceMotion ? 0.01 : 0.55,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
                 >
                   <Link
                     href={item.href}

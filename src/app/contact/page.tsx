@@ -5,12 +5,23 @@ import { Container } from "@/components/layout/container";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionLabel } from "@/components/ui/section-label";
 import { getContactContent } from "@/lib/content";
+import { buildMetadata } from "@/lib/seo";
 
 const content = getContactContent();
+const emailSubject = "Project inquiry for Cornerstone Ephraim";
 
 export const metadata: Metadata = {
-  title: content.seo.title,
-  description: content.seo.description,
+  ...buildMetadata({
+    title: content.seo.title,
+    description: content.seo.description,
+    path: "/contact",
+    keywords: [
+      "Contact Cornerstone Ephraim",
+      "Hire Frontend Engineer",
+      "Freelance Frontend Developer",
+      "Technical Consulting",
+    ],
+  }),
 };
 
 export default function ContactPage() {
@@ -35,7 +46,9 @@ export default function ContactPage() {
             <div>
               <ContactRow label="Email">
                 <Link
-                  href={`mailto:${content.email}`}
+                  href={`mailto:${content.email}?subject=${encodeURIComponent(emailSubject)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 break-all text-xl font-medium tracking-[-0.035em] sm:text-2xl"
                 >
                   {content.email}
@@ -47,7 +60,7 @@ export default function ContactPage() {
                 <Link
                   href={content.scheduler.href}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-xl font-medium tracking-[-0.035em] sm:text-2xl"
                 >
                   {content.scheduler.label}
@@ -59,7 +72,7 @@ export default function ContactPage() {
                 <a
                   href={content.resume.href}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   download="Cornerstone_Ephraim_Resume.pdf"
                   className="inline-flex items-center gap-2 text-xl font-medium tracking-[-0.035em] sm:text-2xl"
                 >
@@ -78,7 +91,7 @@ export default function ContactPage() {
                       key={social.href}
                       href={social.href}
                       target="_blank"
-                      rel="noreferrer"
+                      rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 rounded-full border border-ink-primary/10 px-4 py-2 text-sm transition-colors hover:border-ink-primary/25"
                     >
                       {social.label}

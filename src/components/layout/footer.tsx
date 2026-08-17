@@ -9,6 +9,8 @@ export default function Footer({
   navigation: NavigationContent;
   contact: ContactContent;
 }) {
+  const emailSubject = "Project inquiry for Cornerstone Ephraim";
+
   return (
     <footer className="bg-canvas-dark py-16 text-ink-inverse sm:py-20">
       <Container>
@@ -37,6 +39,7 @@ export default function Footer({
                   key={item.href}
                   href={item.href}
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="text-sm text-ink-inverse/70 hover:text-ink-inverse"
                 >
                   {item.label}
@@ -47,7 +50,9 @@ export default function Footer({
           <div>
             <p className="footer-label">Contact Me</p>
             <Link
-              href={`mailto:${contact.email}`}
+              href={`mailto:${contact.email}?subject=${encodeURIComponent(emailSubject)}`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-5 block break-all text-sm text-ink-inverse/70 hover:text-ink-inverse"
             >
               {contact.email}
@@ -55,7 +60,7 @@ export default function Footer({
             <a
               href={contact.resume.href}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               download="Cornerstone_Ephraim_Resume.pdf"
               className="mt-3 block text-sm text-ink-inverse/70 hover:text-ink-inverse"
             >
@@ -64,7 +69,7 @@ export default function Footer({
             <Link
               href={contact.scheduler.href}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="mt-3 block text-sm text-ink-inverse/70 hover:text-ink-inverse"
             >
               {contact.scheduler.label}
