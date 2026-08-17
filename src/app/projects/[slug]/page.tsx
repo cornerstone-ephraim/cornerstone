@@ -5,6 +5,7 @@ import { ProjectDetail } from "@/components/project/project-detail";
 import { ProjectHero } from "@/components/project/project-hero";
 import { ProjectNavigation } from "@/components/project/project-navigation";
 import { getAllProjects, getHomeContent, getProjectBySlug } from "@/lib/content";
+import { buildMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return getAllProjects().map((project) => ({ slug: project.slug }));
@@ -18,10 +19,22 @@ export async function generateMetadata({
   const { slug } = await params;
   const project = getProjectBySlug(slug);
   if (!project) return {};
-  return {
+  return buildMetadata({
     title: project.seo.title,
     description: project.seo.description,
-  };
+    path: `/projects/${project.slug}`,
+    image: project.cover.image,
+    imageAlt: project.cover.alt,
+    type: "article",
+    keywords: [
+      project.title,
+      project.category,
+      project.industry,
+      project.role,
+      ...project.highlights,
+      ...project.technologies,
+    ],
+  });
 }
 
 export default async function ProjectPage({

@@ -3,12 +3,14 @@
 import { ArrowRight, Menu } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import type { NavigationContent } from "@/lib/types";
 import MobileNav from "./mobile-nav";
 
 export default function Navbar({ content }: { content: NavigationContent }) {
   const pathname = usePathname();
+  const menuId = useId();
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
   const [open, setOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
 
@@ -76,7 +78,9 @@ export default function Navbar({ content }: { content: NavigationContent }) {
         <button
           type="button"
           aria-label={open ? "Close navigation" : "Open navigation"}
+          aria-controls={menuId}
           aria-expanded={open}
+          ref={menuButtonRef}
           onClick={() => setOpen((value) => !value)}
           className="grid size-11 place-items-center rounded-full border border-ink-inverse/20 md:hidden"
         >
@@ -85,9 +89,13 @@ export default function Navbar({ content }: { content: NavigationContent }) {
       </nav>
 
       <MobileNav
+        id={menuId}
         content={content}
         open={open}
-        onCloseAction={() => setOpen(false)}
+        onCloseAction={() => {
+          setOpen(false);
+          requestAnimationFrame(() => menuButtonRef.current?.focus());
+        }}
       />
     </header>
   );

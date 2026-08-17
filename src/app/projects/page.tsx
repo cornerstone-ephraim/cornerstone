@@ -4,11 +4,21 @@ import { ProjectGrid } from "@/components/project/project-grid";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionLabel } from "@/components/ui/section-label";
 import { getAllProjects } from "@/lib/content";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "Projects | Cornerstone Ephraim",
-  description: "Selected client work, products, and digital experiences.",
-};
+  description:
+    "Selected client work, product work, and digital experiences shaped by frontend engineering, product thinking, and clear communication.",
+  path: "/projects",
+  keywords: [
+    "Frontend Projects",
+    "Product Case Studies",
+    "Client Work",
+    "Digital Experiences",
+    "Next.js Projects",
+  ],
+});
 
 export default function ProjectsPage() {
   const projects = getAllProjects();

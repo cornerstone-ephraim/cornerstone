@@ -2,6 +2,15 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Container } from "@/components/layout/container";
 import { SectionLabel } from "@/components/ui/section-label";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "Page not found | Cornerstone Ephraim",
+  description:
+    "The page you are looking for is unavailable. Return to Cornerstone Ephraim's portfolio homepage.",
+  path: "/404",
+  noIndex: true,
+});
 
 export default function NotFound() {
   return (

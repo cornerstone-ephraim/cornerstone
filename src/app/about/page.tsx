@@ -11,12 +11,24 @@ import {
   getExperienceContent,
   getHomeContent,
 } from "@/lib/content";
+import { buildMetadata } from "@/lib/seo";
 
 const content = getAboutContent();
 
 export const metadata: Metadata = {
-  title: content.seo.title,
-  description: content.seo.description,
+  ...buildMetadata({
+    title: content.seo.title,
+    description: content.seo.description,
+    path: "/about",
+    image: content.portrait,
+    imageAlt: content.portraitAlt,
+    keywords: [
+      "About Cornerstone Ephraim",
+      "Frontend Engineering",
+      "Product Thinking",
+      "User Experience",
+    ],
+  }),
 };
 
 export default function AboutPage() {
@@ -57,7 +69,7 @@ export default function AboutPage() {
               <a
                 href={content.resume.href}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 download="Cornerstone_Ephraim_Resume.pdf"
                 className="button button-ghost-dark motion-link mt-4"
               >

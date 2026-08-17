@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -24,6 +24,10 @@ export default function ContactForm({
   const [errors, setErrors] = useState<Partial<FormState>>({});
   const [submitting, setSubmitting] = useState(false);
   const [sent, setSent] = useState<null | "ok" | "err">(null);
+  const firstNameRef = useRef<HTMLInputElement>(null);
+  const lastNameRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const messageRef = useRef<HTMLTextAreaElement>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -38,7 +42,18 @@ export default function ContactForm({
 
     const v = validateContactForm(form);
     setErrors(v);
-    if (Object.keys(v).length) return;
+    if (Object.keys(v).length) {
+      const firstInvalidField = Object.keys(v)[0] as keyof FormState;
+      const fields = {
+        firstName: firstNameRef,
+        lastName: lastNameRef,
+        email: emailRef,
+        message: messageRef,
+      };
+
+      fields[firstInvalidField]?.current?.focus();
+      return;
+    }
 
     try {
       setSubmitting(true);
@@ -68,21 +83,26 @@ export default function ContactForm({
       transition={{ duration: 0.5, delay: 0.2 }}
     >
       {sent === "ok" && (
-        <div className="mb-6 rounded-xl bg-green-50 p-4">
+        <div className="mb-6 rounded-xl bg-green-50 p-4" role="status">
           <p className="text-sm text-green-700">
             Thanks! Your message has been sent successfully.
           </p>
         </div>
       )}
       {sent === "err" && (
-        <div className="mb-6 rounded-xl bg-red-50 p-4">
+        <div className="mb-6 rounded-xl bg-red-50 p-4" role="alert">
           <p className="text-sm text-red-700">
             I could not send your message. Please try again in a moment.
           </p>
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-5"
+        noValidate
+        aria-busy={submitting}
+      >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="flex flex-col gap-2">
             <Label
@@ -94,6 +114,7 @@ export default function ContactForm({
             <Input
               id="firstName"
               name="firstName"
+              ref={firstNameRef}
               type="text"
               autoComplete="given-name"
               placeholder="First name"
@@ -126,6 +147,7 @@ export default function ContactForm({
             <Input
               id="lastName"
               name="lastName"
+              ref={lastNameRef}
               type="text"
               autoComplete="family-name"
               placeholder="Last name"
@@ -154,6 +176,7 @@ export default function ContactForm({
           <Input
             id="email"
             name="email"
+            ref={emailRef}
             type="email"
             autoComplete="email"
             placeholder="you@example.com"
@@ -181,6 +204,7 @@ export default function ContactForm({
           <Textarea
             id="message"
             name="message"
+            ref={messageRef}
             placeholder="Tell me about your project"
             value={form.message}
             onChange={handleChange}

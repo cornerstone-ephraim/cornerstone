@@ -31,7 +31,7 @@ export function ContactSection({
                   className="button border border-ink-primary/25 text-ink-primary transition-colors hover:bg-ink-primary/10"
                   href={content.scheduler.href}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                 >
                   {content.scheduler.label}
                   <ArrowUpRight />

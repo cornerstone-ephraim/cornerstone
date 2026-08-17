@@ -1,22 +1,23 @@
 import Script from "next/script";
+import {
+  DEFAULT_SEO_IMAGE,
+  SITE_AUTHOR,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/seo";
 
-interface StructuredDataProps {
-  type?: "person" | "website";
-}
-
-export default function StructuredData({
-  type = "person",
-}: StructuredDataProps) {
+export default function StructuredData() {
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: "Cornerstone Ephraim",
+    name: SITE_AUTHOR,
     jobTitle: "Frontend Engineer",
-    url: "https://cornerstoneephraim.vercel.app",
+    url: SITE_URL,
     sameAs: [
-      "https://github.com/cornerstone-ephraim",
+      "https://github.com/Cornerstone-04",
       "https://linkedin.com/in/cornerstone-ephraim",
       "https://x.com/4th_ephraim",
+      "https://instagram.com/thecornerstoneephraim",
     ],
     worksFor: {
       "@type": "Organization",
@@ -28,34 +29,33 @@ export default function StructuredData({
       "Next.js",
       "TypeScript",
       "Frontend Development",
-      "Web Development",
-      "JavaScript",
-      "TailwindCSS",
-      "Zustand",
-      "Playwright",
+      "Product Engineering",
+      "User Experience",
+      "Product Websites",
+      "Digital Products",
+      "Tailwind CSS",
     ],
     email: "thecornerstoneephraim@gmail.com",
-    image: "https://cornerstoneephraim.vercel.app/images/cornerstone.webp",
+    image: `${SITE_URL}${DEFAULT_SEO_IMAGE}`,
   };
 
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Cornerstone Ephraim Portfolio",
-    url: "https://cornerstoneephraim.vercel.app",
+    name: `${SITE_NAME} Portfolio`,
+    url: SITE_URL,
     description:
-      "Frontend Engineer with 3 years experience building scalable, responsive web apps with ReactJS, Next.js, and TypeScript.",
+      "A product-minded frontend engineering portfolio featuring client work, product work, and digital experiences.",
     author: {
       "@type": "Person",
-      name: "Cornerstone Ephraim",
+      name: SITE_AUTHOR,
+      url: SITE_URL,
     },
   };
 
-  const schema = type === "person" ? personSchema : websiteSchema;
-
   return (
     <Script id="structured-data" type="application/ld+json">
-      {JSON.stringify(schema)}
+      {JSON.stringify([personSchema, websiteSchema])}
     </Script>
   );
 }

@@ -35,6 +35,7 @@ export function ProjectHero({ project }: { project: ProjectContent }) {
                 <Link
                   href={project.website}
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm"
                 >
                   Visit live site
@@ -45,6 +46,7 @@ export function ProjectHero({ project }: { project: ProjectContent }) {
                 <Link
                   href={project.github}
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm"
                 >
                   View GitHub

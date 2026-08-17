@@ -7,9 +7,16 @@ import ScrollToTop from "@/components/layout/scroll-to-top";
 import StructuredData from "@/components/common/structured-data";
 import {
   getContactContent,
-  getHomeContent,
   getNavigationContent,
 } from "@/lib/content";
+import {
+  DEFAULT_SEO_IMAGE,
+  DEFAULT_SEO_MONOGRAM,
+  SITE_AUTHOR,
+  SITE_NAME,
+  SITE_URL,
+  buildMetadata,
+} from "@/lib/seo";
 import "./globals.css";
 
 const geist = Geist({
@@ -22,34 +29,24 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const home = getHomeContent();
-
 export const metadata: Metadata = {
-  title: home.seo.title,
-  description: home.seo.description,
-  metadataBase: new URL("https://cornerstoneephraim.vercel.app"),
-  openGraph: {
-    title: home.seo.title,
-    description: home.seo.description,
-    url: "/",
-    siteName: "Cornerstone Ephraim",
-    images: [home.seo.monogram!, home.seo.image!],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    creator: "@4th_ephraim",
-    title: home.seo.title,
-    description: home.seo.description,
-    images: [home.seo.monogram!, home.seo.image!],
-  },
+  ...buildMetadata({
+    title: `${SITE_NAME} | Product-minded Frontend Engineer`,
+    description:
+      "Frontend engineer building modern interfaces, digital products, and experiences for startups, technology companies, and ambitious founders.",
+    image: DEFAULT_SEO_IMAGE,
+    imageAlt: SITE_AUTHOR,
+  }),
+  metadataBase: new URL(SITE_URL),
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon-32x32.png",
     apple: "/apple-touch-icon.png",
   },
-  robots: { index: true, follow: true },
+  manifest: "/site.webmanifest",
+  other: {
+    "msapplication-TileImage": DEFAULT_SEO_MONOGRAM,
+  },
 };
 
 export default function RootLayout({
@@ -67,9 +64,14 @@ export default function RootLayout({
         <StructuredData />
       </head>
       <body>
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         <ScrollProgress />
         <Navbar content={navigation} />
-        <main>{children}</main>
+        <main id="main-content" tabIndex={-1}>
+          {children}
+        </main>
         <ScrollToTop />
         <Footer navigation={navigation} contact={contact} />
       </body>
