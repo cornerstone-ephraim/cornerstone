@@ -14,7 +14,7 @@ export default function StructuredData({
     jobTitle: "Frontend Engineer",
     url: "https://cornerstoneephraim.vercel.app",
     sameAs: [
-      "https://github.com/Cornerstone-04",
+      "https://github.com/cornerstone-ephraim",
       "https://linkedin.com/in/cornerstone-ephraim",
       "https://x.com/4th_ephraim",
     ],
@@ -35,7 +35,7 @@ export default function StructuredData({
       "Playwright",
     ],
     email: "thecornerstoneephraim@gmail.com",
-    image: "https://cornerstoneephraim.vercel.app/images/cornerstone.jpg",
+    image: "https://cornerstoneephraim.vercel.app/images/cornerstone.webp",
   };
 
   const websiteSchema = {

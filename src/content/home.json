@@ -1,7 +1,9 @@
 {
   "seo": {
     "title": "Cornerstone Ephraim | Product-minded Frontend Engineer",
-    "description": "Frontend engineer building modern interfaces, digital products, and experiences for startups, technology companies, and ambitious founders."
+    "description": "Frontend engineer building modern interfaces, digital products, and experiences for startups, technology companies, and ambitious founders.",
+    "image": "/cornerstone.webp",
+    "monogram": "/cornerstone-monogram.webp"
   },
   "hero": {
     "eyebrow": "Frontend engineer",
@@ -13,7 +15,7 @@
       "href": "/docs/CORNERSTONE_EPHRAIM_RESUME.pdf",
       "external": true
     },
-    "portrait": "/cornerstone.jpg",
+    "portrait": "/cornerstone.webp",
     "portraitAlt": "Cornerstone Ephraim",
     "trustSignals": [
       "Client work",

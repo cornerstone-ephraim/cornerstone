@@ -4,7 +4,7 @@
   "category": "Product",
   "industry": "Blockchain",
   "website": "https://certifychain-fe.vercel.app",
-  "github": "https://github.com/Cornerstone-04/certifychain-fe",
+  "github": "https://github.com/cornerstone-ephraim/certifychain-fe",
   "status": "Personal Project",
   "role": "Frontend Engineer",
   "summary": "CertifyChain explores secure digital credential verification using modern web technologies and decentralized principles.",
@@ -32,11 +32,7 @@
       "CertifyChain explores secure digital credential verification using modern web technologies and decentralized principles.",
       "The product focuses on how certificates and credentials can be verified through a clear digital experience."
     ],
-    "role": [
-      "Frontend development",
-      "State management",
-      "API integration"
-    ],
+    "role": ["Frontend development", "State management", "API integration"],
     "challenges": [
       "The project needed to communicate digital credential verification clearly.",
       "The interface had to support verification concepts without making the product feel too technical."
