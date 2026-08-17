@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     description: home.seo.description,
     url: "/",
     siteName: "Cornerstone Ephraim",
-    images: ["/cornerstone.jpg"],
+    images: [home.seo.monogram!, home.seo.image!],
     locale: "en_US",
     type: "website",
   },
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     creator: "@4th_ephraim",
     title: home.seo.title,
     description: home.seo.description,
-    images: ["/cornerstone.jpg"],
+    images: [home.seo.monogram!, home.seo.image!],
   },
   icons: {
     icon: "/favicon.ico",
@@ -52,7 +52,11 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const navigation = getNavigationContent();
   const contact = getContactContent();
 

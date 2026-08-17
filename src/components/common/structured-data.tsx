@@ -35,7 +35,7 @@ export default function StructuredData({
       "Playwright",
     ],
     email: "thecornerstoneephraim@gmail.com",
-    image: "https://cornerstoneephraim.vercel.app/images/cornerstone.jpg",
+    image: "https://cornerstoneephraim.vercel.app/images/cornerstone.webp",
   };
 
   const websiteSchema = {

@@ -14,6 +14,8 @@ export type LinkItem = {
 export type SeoContent = {
   title: string;
   description: string;
+  image?: string;
+  monogram?: string;
 };
 
 export type HomeContent = {
