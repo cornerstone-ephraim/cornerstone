@@ -9,7 +9,6 @@ import StructuredData from "@/components/common/structured-data";
 import { getContactContent, getNavigationContent } from "@/lib/content";
 import {
   DEFAULT_SEO_IMAGE,
-  DEFAULT_SEO_MONOGRAM,
   SITE_AUTHOR,
   SITE_NAME,
   SITE_URL,
@@ -42,9 +41,6 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   manifest: "/site.webmanifest",
-  other: {
-    "msapplication-TileImage": DEFAULT_SEO_MONOGRAM,
-  },
 };
 
 export default function RootLayout({

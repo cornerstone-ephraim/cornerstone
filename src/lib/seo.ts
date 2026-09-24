@@ -5,7 +5,6 @@ export const SITE_NAME = "Cornerstone Ephraim";
 export const SITE_AUTHOR = "Cornerstone Ephraim";
 export const SITE_TWITTER = "@4th_ephraim";
 export const DEFAULT_SEO_IMAGE = "/cornerstone.webp";
-export const DEFAULT_SEO_MONOGRAM = "/cornerstone-monogram.webp";
 
 const DEFAULT_KEYWORDS = [
   "Cornerstone Ephraim",

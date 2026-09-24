@@ -2,8 +2,7 @@
   "seo": {
     "title": "Cornerstone Ephraim | Product-minded Frontend Engineer",
     "description": "Frontend engineer building modern interfaces, digital products, and experiences for startups, technology companies, and ambitious founders.",
-    "image": "/cornerstone.webp",
-    "monogram": "/cornerstone-monogram.webp"
+    "image": "/cornerstone.webp"
   },
   "hero": {
     "eyebrow": "Frontend engineer",
